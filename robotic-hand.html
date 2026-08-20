@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tendon-Driven Robotic Hand · Prem Vyas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div style="background: #0A0A0A; color: #EDEDEF; font-family: Inter, system-ui, sans-serif; min-height: 100vh; overflow-x: hidden">
+
+  <header style="position: fixed; top: 0; left: 0; right: 0; height: 56px; z-index: 40; background: rgba(10,10,10,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08)">
+    <nav style="height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+      <a href="index.html" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #EDEDEF">Prem Vyas</a>
+      <a href="index.html#work" class="link-hover-fg" style="font-size: 14px; color: #A0A0A8">← Back to home</a>
+    </nav>
+  </header>
+
+  <main style="max-width: 1280px; margin: 0 auto; padding: 136px 32px 0">
+
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 40px">
+      <div style="flex: 1 1 460px; max-width: 720px">
+        <h1 style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.03em; font-weight: 500">Tendon-Driven Robotic Hand</h1>
+        <p style="margin: 24px 0 0; font-size: 18px; line-height: 1.6; color: #A0A0A8; text-wrap: pretty">A five-finger robotic hand built to play rock paper scissors against a person. Assembled and strung, currently being brought up.</p>
+      </div>
+      <div data-reveal="" style="flex: 0 1 400px; min-width: 280px; background: #121214; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 22px 24px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; gap: 16px; justify-content: space-between"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">Mechanical</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.5; color: #EDEDEF; text-align: right">Assembled, servos installed, tendons strung</span></div>
+        <div style="display: flex; gap: 16px; justify-content: space-between"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">Electrical</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.5; color: #EDEDEF; text-align: right">Power delivery in progress</span></div>
+        <div style="display: flex; gap: 16px; justify-content: space-between"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">Software</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.5; color: #EDEDEF; text-align: right">Not started</span></div>
+      </div>
+    </div>
+
+      <div data-reveal="" style="margin-top: 96px; max-width: 900px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82; padding-bottom: 16px">Specifications</div>
+        <div style="height: 1px; background: rgba(255,255,255,0.08)"></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Fingers</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">5, each independently actuated</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Actuation</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">5 × MG996R metal gear servos, ~11 kg·cm stall at 6 V, 180° travel</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Tendons</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">Fishing line pull, nylon paracord return, one per finger</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Structure</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">3D printed. Forearm, servo mounts and base redesigned in SolidWorks</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Control</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">Arduino Uno, direct PWM, 500 to 2500 µs pulse range</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Servo rail</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">Dedicated 6 V supply, current limited, isolated from logic by a single common ground</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Current budget</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">~1 A per servo running, ~2.5 A stall, ~5 A for all five</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Calibration</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">Potentiometer on A0 mapped 0 to 1023 onto 0 to 180°, angles logged over serial</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Planned</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">Raspberry Pi, camera, MediaPipe 21-point hand landmarks, OpenCV, Python</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Built with</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">SolidWorks, Arduino, C++, 3D printing, bench power</span></div>
+      </div>
+
+      <section data-reveal="" style="max-width: 720px; margin-top: 96px">
+        <h2 style="margin: 0 0 16px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">Why I built it</h2>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">Most robotic hand projects mirror a human hand in real time. The hand copies you, so the interesting decision is still being made by the person.</p>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">I wanted the hand to decide. Rock paper scissors is the smallest problem that forces that: three poses, a fixed base, and a machine that has to choose its own move and be right more often than chance.</p>
+      </section>
+
+      <section style="max-width: 720px; margin-top: 96px">
+        <div data-reveal=""><h2 style="margin: 0 0 16px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">What I did</h2></div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Repackaged the forearm for five independent fingers.</strong> The open-source hand I started from ties the ring and pinky to a single servo, which permanently caps it at four controllable fingers. I reworked the forearm in SolidWorks to fit a fifth servo, so every finger gets its own tendon and its own actuator. Rock paper scissors only needs three poses, but I didn't want the hardware to be the reason the project stopped there.</p>
+        </div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Modelled the servo mounts and the base.</strong> The mounts are cut to my servos rather than the ones the source build uses, so each one seats on its own features with the tendon exit lined up to its horn. The base is my own: five servos pulling tendons put a reaction torque back into the whole assembly, and it has to be stiff enough that the hand stays planted instead of rocking every time the fingers close.</p>
+        </div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Built a dedicated servo power rail.</strong> The obvious approach is to run servos off the Arduino's 5 V pin. That works for hobby micro servos and fails here. Five MG996Rs draw roughly 1 A each running and up to 2.5 A stalled, about 5 A total, far past what the Arduino's regulator can source. The servos run off their own current-limited 6 V rail, tied to the Arduino by a single ground jumper and nothing else, so a wiring mistake trips the supply instead of destroying a servo.</p>
+        </div>
+      </section>
+
+      <section style="max-width: 720px; margin-top: 96px">
+        <div data-reveal=""><h2 style="margin: 0 0 16px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">The decision that shaped the project</h2>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">There are two ways to build an unbeatable rock paper scissors machine. One is to react: watch the hand as it forms and counter faster than the person can perceive, the way the University of Tokyo's Janken robot wins, which needs a high speed camera and fast actuators. The other is to predict: model the person's pattern from past rounds and commit before they throw.</p></div>
+        <div data-reveal="" style="margin-top: 24px">
+          <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">I ran the latency budget for reacting on my hardware:</p>
+          <pre style="margin: 24px 0 0; overflow-x: auto; background: #121214; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 22px 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7; color: #EDEDEF">webcam frame at 30 fps            ~33 ms
+MediaPipe inference on a Pi       ~20 to 50 ms
+MG996R travel, 90° at 0.17 s/60°  ~250 ms
+                                  -----------
+                                  ~300 ms+</pre>
+        </div>
+        <div data-reveal="" style="margin-top: 40px">
+          <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">A human commits their throw somewhere around 200 to 400 ms after the last beat, and servo travel alone eats most of that. Reacting is not achievable with these actuators.</p>
+          <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">Predicting removes the constraint. The hand commits during the countdown, so latency stops mattering and the servos have the whole count to reach position. It also gives the project a number: random play wins 33 % of rounds, so anything measurably above that is a result.</p>
+          <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">Choosing the architecture my actuators could actually support, instead of the one that sounds more impressive, decided the entire software design.</p>
+          <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">The plan is to log each round as three fields: what I threw, what the person threw, and the outcome. Over enough rounds that history exposes bias, most people are not random, they favor certain throws after a win or a loss, and a simple model trained on that log can pick up the pattern and counter whatever they're statistically most likely to throw next.</p>
+        </div>
+      </section>
+
+      <section data-reveal="" style="max-width: 720px; margin-top: 96px">
+        <h2 style="margin: 0 0 16px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">Where I'm at</h2>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">The hand is built and every tendon is strung, five fingers, five servos, ready to move. Right now I'm solving the last problem before it actually works: getting enough power to all five servos when they move at the same time. A breadboard is fine for testing one servo, but it can't handle five pulling power together, so I'm moving that connection onto thicker wire and a solid terminal block, with a capacitor across the line to smooth out the power spike when several fingers move at once.</p>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">Once that's sorted, every servo holds its pose reliably and the project moves to software.</p>
+      </section>
+
+      <section data-reveal="" style="max-width: 720px; margin-top: 96px">
+        <h2 style="margin: 0 0 16px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">What's next</h2>
+        <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 16px; counter-reset: n">
+          <li style="display: flex; gap: 16px"><span style="flex: none; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7; color: #7A7A82">01</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">All five servos holding rock, paper and scissors on command</span></li>
+          <li style="display: flex; gap: 16px"><span style="flex: none; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7; color: #7A7A82">02</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">Arduino&nbsp;and camera, MediaPipe 21-point hand landmark tracking, gesture classified by counting extended fingers</span></li>
+          <li style="display: flex; gap: 16px"><span style="flex: none; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7; color: #7A7A82">03</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">Serial link from Pi to Arduino, full round loop with a countdown</span></li>
+          <li style="display: flex; gap: 16px"><span style="flex: none; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7; color: #7A7A82">04</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">Move prediction from logged rounds, then a measured win rate over 100+ games</span></li>
+        </ol>
+      </section>
+
+      <section data-reveal="" style="margin-top: 96px; padding-bottom: clamp(64px, 8vw, 112px)">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82; padding-bottom: 16px">Gallery</div>
+        <div style="height: 1px; background: rgba(255,255,255,0.08)"></div>
+        <div style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px">
+          <figure style="margin: 0; min-width: 0"><div style="aspect-ratio: 4 / 3; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214; padding: 20px; box-sizing: border-box"><img src="images/hand-assembled-sm.jpg" alt="Assembled robotic hand standing on the bench with tendon lines run" data-zoom="" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: zoom-in"></div><figcaption style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">ASSEMBLED HAND</figcaption></figure>
+          <figure style="margin: 0; min-width: 0"><div style="aspect-ratio: 4 / 3; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214; padding: 20px; box-sizing: border-box"><img src="images/hand-thumb-detail-sm.jpg" alt="Close view of the servo mount and thumb linkage" data-zoom="" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: zoom-in"></div><figcaption style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">BACK SIDE OF ASSEMBLED HAND</figcaption></figure>
+          <figure style="margin: 0; min-width: 0"><div style="aspect-ratio: 4 / 3; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214; padding: 20px; box-sizing: border-box"><img src="images/hand-bench-sm.jpg" alt="Bench setup with DC supply, Arduino and breadboarded servo power rail" data-zoom="" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: zoom-in"></div><figcaption style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">SERVO POWER RAIL BENCH SETUP</figcaption></figure>
+          <figure style="margin: 0; min-width: 0"><div style="aspect-ratio: 4 / 3; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214; padding: 20px; box-sizing: border-box"><img src="images/hand-printed-parts-sm.jpg" alt="Printed hand parts laid out on a cutting mat before assembly" data-zoom="" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: zoom-in"></div><figcaption style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">PRINTED PARTS, PRE-ASSEMBLY</figcaption></figure>
+        </div>
+      </section>
+  <div data-lightbox="" role="dialog" aria-modal="true" aria-label="Enlarged image" style="position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 40px; background: rgba(10,10,10,0.94); opacity: 0; pointer-events: none; transition: opacity 240ms ease-out; cursor: zoom-out">
+    <img data-lightbox-img="" alt="" style="max-width: 100%; max-height: calc(100vh - 140px); object-fit: contain; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214">
+    <div data-lightbox-cap="" style="position: absolute; left: 0; right: 0; bottom: 28px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82"></div>
+    <button data-lightbox-close="" type="button" aria-label="Close" style="position: absolute; top: 20px; right: 24px; background: transparent; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; color: #A0A0A8; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 12px; cursor: pointer">Close</button>
+  </div>
+  </main>
+
+  <footer style="border-top: 1px solid rgba(255,255,255,0.08)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 48px 32px">
+      <a href="index.html#work" class="link-hover-accent" style="font-size: 14px; color: #A0A0A8">← Back to home</a>
+    </div>
+  </footer>
+</div>
+<script src="js/site.js"></script>
+</body>
+</html>

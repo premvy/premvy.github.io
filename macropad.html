@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12-Key Macropad · Prem Vyas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div style="background: #0A0A0A; color: #EDEDEF; font-family: Inter, system-ui, sans-serif; min-height: 100vh; overflow-x: hidden">
+
+  <header style="position: fixed; top: 0; left: 0; right: 0; height: 56px; z-index: 40; background: rgba(10,10,10,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08)">
+    <nav style="height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+      <a href="index.html" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #EDEDEF">Prem Vyas</a>
+      <a href="index.html#work" class="link-hover-fg" style="font-size: 14px; color: #A0A0A8">← Back to home</a>
+    </nav>
+  </header>
+
+  <main style="max-width: 1280px; margin: 0 auto; padding: 136px 32px 0">
+
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 40px">
+      <div style="flex: 1 1 460px; max-width: 720px">
+        <h1 style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.03em; font-weight: 500">12-Key Macropad</h1>
+        <p style="margin: 24px 0 0; font-size: 18px; line-height: 1.6; color: #A0A0A8; text-wrap: pretty">A custom mechanical macropad built to drive the SolidWorks commands that have no keyboard shortcut. Scanned key matrix, per-key addressable RGB, and an OLED, on a microcontroller with eleven usable pins.</p>
+      </div>
+      <div data-reveal="" style="flex: 0 1 400px; min-width: 280px; background: #121214; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 22px 24px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; gap: 16px; justify-content: space-between"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">Status</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.5; color: #EDEDEF; text-align: right">Complete, on my desk, in daily use</span></div>
+        <div style="display: flex; gap: 16px; justify-content: space-between"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">PCB</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.5; color: #EDEDEF; text-align: right">Designed, fabricated, assembled</span></div>
+        <div style="display: flex; gap: 16px; justify-content: space-between"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">Enclosure</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.5; color: #EDEDEF; text-align: right">Modelled and printed</span></div>
+        <div style="display: flex; gap: 16px; justify-content: space-between"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">Firmware</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.5; color: #EDEDEF; text-align: right">Written and running</span></div>
+      </div>
+    </div>
+
+      <div data-reveal="" style="margin-top: 96px; max-width: 900px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82; padding-bottom: 16px">Specifications</div>
+        <div style="height: 1px; background: rgba(255,255,255,0.08)"></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Keys</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">12, wired as a 3 × 4 scanned matrix</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">MCU</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">Seeed XIAO RP2040</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Pin budget</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">10 of 11 GPIO used: 7 matrix, 2 I2C, 1 LED data</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Anti-ghosting</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">12 × 1N4148 diodes, one per key</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Lighting</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">12 × SK6812 MINI-E addressable RGB, single chained data line</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Display</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">0.91" OLED over I2C</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">PCB</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">2 layers, KiCad</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Enclosure</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">3D printed, SolidWorks, internal PCB standoffs and a cut USB-C port</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Firmware</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">Python on CircuitPython</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Built with</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">KiCad, SolidWorks, Python</span></div>
+      </div>
+
+      <section data-reveal="" style="max-width: 720px; margin-top: 96px">
+        <h2 style="margin: 0 0 16px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">Why I built it</h2>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">I spend most of my time in SolidWorks, and the commands I reach for constantly are the ones with no keyboard shortcut at all. Measure, Section View, Mirror, Linear Pattern, Hole Wizard, Convert Entities, Interference Detection, and the toggles for origins, planes and sketch relations are all buried in a menu or a toolbar hunt. Each one costs a couple of seconds and a break in concentration, and I hit them hundreds of times a day.</p>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">A macropad only fixes that if its keys can reach commands the software has no binding for. The way in is F13 through F24. Those keycodes exist in the USB HID spec, but no physical keyboard has shipped them in decades, so nothing in the OS or in SolidWorks claims them. I bind each one inside SolidWorks under Tools, Customize, Keyboard, and the pad sends them.</p>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">The rest of the keys go to shortcuts that already exist and are worth having under a thumb anyway: Ctrl+8 for normal to, Ctrl+B for rebuild, Ctrl+Q for force rebuild.</p>
+      </section>
+
+      <section style="max-width: 720px; margin-top: 96px">
+        <div data-reveal=""><h2 style="margin: 0 0 16px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">What I did</h2></div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Scanned twelve keys on a chip that doesn't have twelve free pins.</strong> Wiring each switch to its own GPIO is the obvious approach and it does not scale. Twelve switches need twelve pins, and the XIAO RP2040 breaks out eleven. Arranging them as a 3 × 4 matrix drops that to seven, which is what made the rest of the board possible: seven for the matrix, two for the I2C display, one for the LED chain.</p>
+        </div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Put a diode on every key.</strong> A bare matrix lies to you. Hold three keys at once and the scan reports a phantom fourth that nobody pressed, because current finds a path backwards through the pressed switches. A 1N4148 in series with each switch makes that path one way, so the matrix reads correctly no matter how many keys are held.</p>
+        </div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Chained twelve addressable LEDs off a single pin.</strong> SK6812 MINI-E LEDs pass data down the line, so all twelve run from one GPIO. The cost is routing: that data line has to snake across the entire key grid on a two layer board without cutting the ground plane into islands. Keeping the return path continuous under the LED chain was the most constrained part of the layout.</p>
+        </div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Mapped the keys to keycodes nothing else uses.</strong> The pad sends F13 through F24 with modifiers, so every key lands on a SolidWorks command that had no shortcut before, without colliding with anything the OS or the application already owns.</p>
+        </div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Hand-soldered every part myself.</strong> The SK6812 MINI-E LEDs are small SMD packages with pads hidden under the body, and the XIAO RP2040 sits on castellated edge pads instead of through-hole pins, so there's no socket to fall back on if a joint comes out wrong. Twelve LEDs, twelve diodes, and the microcontroller module, all placed and soldered by hand with an iron.</p>
+        </div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Modelled the enclosure around my own hardware.</strong> SolidWorks, with internal standoffs sized to the board and a port cut to the XIAO's USB-C connector. Because I designed both halves, the tolerances were mine to get wrong, so the case had to be dimensioned off the actual board outline rather than a datasheet.</p>
+        </div>
+      </section>
+
+      <section data-reveal="" style="max-width: 720px; margin-top: 96px">
+        <h2 style="margin: 0 0 16px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">The constraint that shaped the board</h2>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">Almost every decision here traces back to one number: the XIAO RP2040 gives you eleven GPIO.</p>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">That single limit is why the keys are a matrix instead of twelve direct connections, why the display is I2C instead of SPI, and why the LEDs are addressable and chained instead of individually driven. Twelve directly wired switches would have consumed the entire chip and left nothing for the screen or the lighting.</p>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">Working backwards from the pin count, instead of picking features and hoping they fit, is what let a 12-key pad with RGB and a display run on a microcontroller the size of a postage stamp.</p>
+      </section>
+
+      <section data-reveal="" style="max-width: 720px; margin-top: 96px">
+        <h2 style="margin: 0 0 16px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">Result</h2>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">The board came back from fabrication, got assembled, and it's been on my desk driving my CAD work since. It's the first board I designed that I now use every day.</p>
+      </section>
+
+      <section data-reveal="" style="margin-top: 96px; padding-bottom: clamp(64px, 8vw, 112px)">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82; padding-bottom: 16px">Gallery</div>
+        <div style="height: 1px; background: rgba(255,255,255,0.08)"></div>
+        <div style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+          <figure style="margin: 0"><div style="aspect-ratio: 4 / 3; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214; padding: 16px"><img src="images/mp-desk.png" alt="Macropad on a desk with purple backlighting lit up" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: zoom-in" data-zoom=""></div><figcaption style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">ASSEMBLED MACROPAD</figcaption></figure>
+          <figure style="margin: 0"><div style="aspect-ratio: 4 / 3; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214; padding: 16px"><img src="images/mp-enclosure.png" alt="SolidWorks render of the enclosure, front face" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: zoom-in" data-zoom=""></div><figcaption style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">ENCLOSURE SECTION</figcaption></figure>
+          <figure style="margin: 0"><div style="aspect-ratio: 4 / 3; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214; padding: 16px"><img src="images/mp-layout.png" alt="KiCad routed layout of the macropad PCB" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: zoom-in" data-zoom=""></div><figcaption style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">ROUTED LAYOUT</figcaption></figure>
+          <figure style="margin: 0"><div style="aspect-ratio: 4 / 3; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214; padding: 16px"><img src="images/mp-schematic.png" alt="KiCad schematic sheet for the macropad" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: zoom-in" data-zoom=""></div><figcaption style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">SCHEMATIC</figcaption></figure>
+          <figure style="margin: 0"><div style="aspect-ratio: 4 / 3; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214; padding: 16px"><img src="images/mp-kicad-3d.png" alt="KiCad 3D render of the assembled macropad board" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: zoom-in" data-zoom=""></div><figcaption style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">KICAD 3D VIEW</figcaption></figure>
+        </div>
+      </section>
+  <div data-lightbox="" role="dialog" aria-modal="true" aria-label="Enlarged image" style="position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 40px; background: rgba(10,10,10,0.94); opacity: 0; pointer-events: none; transition: opacity 240ms ease-out; cursor: zoom-out">
+    <img data-lightbox-img="" alt="" style="max-width: 100%; max-height: calc(100vh - 140px); object-fit: contain; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214">
+    <div data-lightbox-cap="" style="position: absolute; left: 0; right: 0; bottom: 28px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82"></div>
+    <button data-lightbox-close="" type="button" aria-label="Close" style="position: absolute; top: 20px; right: 24px; background: transparent; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; color: #A0A0A8; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 12px; cursor: pointer">Close</button>
+  </div>
+  </main>
+
+  <footer style="border-top: 1px solid rgba(255,255,255,0.08)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 48px 32px">
+      <a href="index.html#work" class="link-hover-accent" style="font-size: 14px; color: #A0A0A8">← Back to home</a>
+    </div>
+  </footer>
+</div>
+<script src="js/site.js"></script>
+</body>
+</html>

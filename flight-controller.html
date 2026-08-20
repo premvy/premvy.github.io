@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Custom Drone Flight Controller · Prem Vyas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div style="background: #0A0A0A; color: #EDEDEF; font-family: Inter, system-ui, sans-serif; min-height: 100vh; overflow-x: hidden">
+
+  <header style="position: fixed; top: 0; left: 0; right: 0; height: 56px; z-index: 40; background: rgba(10,10,10,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08)">
+    <nav style="height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+      <a href="index.html" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #EDEDEF">Prem Vyas</a>
+      <a href="index.html#work" class="link-hover-fg" style="font-size: 14px; color: #A0A0A8">← Back to home</a>
+    </nav>
+  </header>
+
+  <main style="max-width: 1280px; margin: 0 auto; padding: 136px 32px 0; position: relative">
+
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 40px">
+      <div style="flex: 1 1 460px; max-width: 720px">
+        <h1 style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.03em; font-weight: 500">Custom Drone Flight Controller</h1>
+        <p style="margin: 24px 0 0; font-size: 18px; line-height: 1.6; color: #A0A0A8; text-wrap: pretty">A two layer STM32 board I designed, routed, and took all the way to fabricated hardware. 79 components in 40 × 44.8 mm, one part every 22 mm².</p>
+      </div>
+      <div data-reveal="" style="flex: 0 1 400px; min-width: 280px; background: #121214; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 22px 24px; display: flex; flex-direction: column; gap: 12px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #EDEDEF">Rev 1 fabricated, in hand</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #EDEDEF">Firmware in progress</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #EDEDEF">Not yet flown</div>
+      </div>
+    </div>
+
+      <div data-reveal="" style="margin-top: 96px; max-width: 900px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82; padding-bottom: 16px">Specifications</div>
+        <div style="height: 1px; background: rgba(255,255,255,0.08)"></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Board</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">40.0 × 44.8 mm, 1785 mm², 2 layers</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">MCU</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">STM32F722RET6, Cortex-M7 at 216 MHz with hardware FPU</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">IMU</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">ICM-42688, 6-axis, over SPI</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Barometer</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">BMP580, over I2C</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Logging</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">microSD, 4-bit SDMMC</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Power</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">2S LiPo, 7.4 V nominal to 8.4 V charged. 3.3 V buck for logic, 5 V buck-boost for servos and ESCs, onboard charging over USB-C</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Outputs</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">2 × 3-pin PWM headers</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Layout</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">79 components, 393 pads, 87 nets, 417 track segments, 49 vias</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Assembly</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">Single sided, all 79 parts on the top layer</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.08)"><span style="flex: 0 0 220px; font-size: 16px; line-height: 1.5; color: #A0A0A8">Built with</span><span style="flex: 1 1 300px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #EDEDEF">KiCad, STM32CubeMX, C, Python, JLCPCB</span></div>
+      </div>
+
+      <section data-reveal="" style="max-width: 720px; margin-top: 96px">
+        <h2 style="margin: 0 0 16px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">Why I built it</h2>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">I'm on the mechanical team of my university's drone club, and I kept hitting the same wall: I could design a mount or a mechanism, but the electronics on the aircraft were a black box to me. Mechatronics is supposed to be both sides, and I only had one.</p>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">So I picked the hardest board on a drone and built one from a blank schematic. The flight controller went from the part I understood least to the part I understand best.</p>
+      </section>
+
+      <section style="max-width: 720px; margin-top: 96px">
+        <div data-reveal=""><h2 style="margin: 0 0 16px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">What I did</h2></div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Put a Cortex-M7 on two layers.</strong> The STM32F722 runs at 216 MHz with a hardware FPU, which is real headroom for tight control loops, but it also brings 64 pins to escape, high speed USB, a 4-bit SDMMC bus, and two crystal oscillators. All of that, plus both sensors and the entire power system, fits in 40 × 44.8 mm on two copper layers.</p>
+        </div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Kept the sensors clean without an inner ground plane.</strong> Switching converters are noisy and an IMU is exactly the part that noise ruins. Four layers would have given me a dedicated ground plane to hide behind. On two, component placement, the ground pour, and stitching via coverage have to do that job instead.</p>
+        </div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Routed 87 nets by hand in 417 segments and 49 vias.</strong> Length matched the USB differential pair so the data lines stay in sync. Ran 0.6 mm copper on the power rails and 0.2 mm on signal. Placed every decoupling capacitor hard against the pin it protects, including the 2.2 µF on VCAP that the chip will not boot without.</p>
+        </div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Built two power rails from two sources that can't be wired together.</strong> USB-C delivers 5 V, a 2S LiPo sits between 8.4 V charged and roughly 6 V flat. A charging IC arbitrates between them, a buck makes clean 3.3 V for logic, and a buck-boost holds 5 V steady for servos and ESCs even as the pack sags below its own output voltage.</p>
+        </div>
+        <div data-reveal="" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-top: 24px">
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty"><strong style="color: #EDEDEF; font-weight: 500">Designed it to be cheap to manufacture.</strong> Every one of the 79 components sits on the top layer, so assembly is a single pick and place pass instead of two. Held every trace and via inside the fab’s minimums and cleared DRC before release.</p>
+        </div>
+      </section>
+
+      <section data-reveal="" style="max-width: 720px; margin-top: 96px">
+        <h2 style="margin: 0 0 16px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">The hardest part wasn't the circuit</h2>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">KiCad's stock libraries had no symbols or footprints for most of the parts I picked. Drawing ten footprints by hand from datasheet drawings is slow, and it's the single easiest place in the whole project to introduce an error you don't discover until the boards arrive and something doesn't fit.</p>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">So I automated it. A Python pipeline reads a list of supplier part numbers and pulls the symbol, footprint, and 3D model for each one directly into a local KiCad library. Adding a part became a one line change and a script run, and every footprint came from the manufacturer's own data instead of my reading of a dimension drawing.</p>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">That tooling is the Python in the repo. The firmware is C.</p>
+      </section>
+
+      <section data-reveal="" style="max-width: 720px; margin-top: 96px">
+        <h2 style="margin: 0 0 16px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">Where it is now</h2>
+        <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">Boards are back from the fabrication and I'm working through bring up: rail voltages first, then USB enumeration, then each peripheral one at a time before anything gets bolted to a frame.</p>
+      </section>
+
+      <section data-reveal="" style="margin-top: 96px; padding-bottom: clamp(64px, 8vw, 112px)">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82; padding-bottom: 16px">Gallery</div>
+        <div style="height: 1px; background: rgba(255,255,255,0.08)"></div>
+        <div style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px">
+          <figure style="margin: 0"><div style="aspect-ratio: 4 / 3; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214; padding: 16px"><img src="images/fc-board-top.png" alt="Assembled flight controller board, top side" data-zoom="" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: zoom-in"></div><figcaption style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">ASSEMBLED BOARD</figcaption></figure>
+          <figure style="margin: 0"><div style="aspect-ratio: 4 / 3; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214; padding: 16px"><img src="images/fc-kicad-3d.png" alt="KiCad 3D render of the board" data-zoom="" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: zoom-in"></div><figcaption style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">KICAD 3D VIEW</figcaption></figure>
+          <figure style="margin: 0"><div style="aspect-ratio: 4 / 3; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214; padding: 16px"><img src="images/fc-layout.png" alt="KiCad routed layout with copper and nets" data-zoom="" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: zoom-in"></div><figcaption style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">ROUTED LAYOUT</figcaption></figure>
+          <figure style="margin: 0"><div style="aspect-ratio: 4 / 3; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214; padding: 16px"><img src="images/fc-schematic.png" alt="Full KiCad schematic sheet" data-zoom="" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: zoom-in"></div><figcaption style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82">FULL SCHEMATIC</figcaption></figure>
+        </div>
+      </section>
+  <div data-lightbox="" role="dialog" aria-modal="true" aria-label="Enlarged image" style="position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 40px; background: rgba(10,10,10,0.94); opacity: 0; pointer-events: none; transition: opacity 240ms ease-out; cursor: zoom-out">
+    <img data-lightbox-img="" alt="" style="max-width: 100%; max-height: calc(100vh - 140px); object-fit: contain; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: #121214">
+    <div data-lightbox-cap="" style="position: absolute; left: 0; right: 0; bottom: 28px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82"></div>
+    <button data-lightbox-close="" type="button" aria-label="Close" style="position: absolute; top: 20px; right: 24px; background: transparent; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; color: #A0A0A8; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 12px; cursor: pointer">Close</button>
+</div></main>
+
+  <footer style="border-top: 1px solid rgba(255,255,255,0.08)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 48px 32px">
+      <a href="index.html#work" class="link-hover-accent" style="font-size: 14px; color: #A0A0A8">← Back to home</a>
+    </div>
+  </footer>
+</div>
+<script src="js/site.js"></script>
+</body>
+</html>
