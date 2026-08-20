@@ -1,0 +1,46 @@
+/* Shared base styles for the portfolio site. Per-element layout/color styling
+   stays inline on each page (ported verbatim from the Claude Design source)
+   so this file only carries what can't be expressed inline: resets,
+   keyframes, hover/focus states, and the one responsive breakpoint. */
+
+html, body { margin: 0; padding: 0; background: #0A0A0A; }
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; }
+* { box-sizing: border-box; }
+
+a { color: #EDEDEF; text-decoration: none; }
+a:hover { color: #FFB020; }
+:focus-visible { outline: 2px solid #FFB020; outline-offset: 2px; }
+
+input::placeholder, textarea::placeholder { color: #7A7A82; }
+
+#work, #experience, #contact { scroll-margin-top: 56px; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes cuePulse { 0%, 100% { opacity: 0.9; } 50% { opacity: 0.25; } }
+@keyframes dotPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* Nav / back-to-home links: muted, brighten on hover */
+.link-hover-fg:hover { color: #EDEDEF !important; }
+
+/* Footer links + project-page back-to-home: muted, hover to accent */
+.link-hover-accent:hover { color: #FFB020 !important; }
+
+/* Home page project cards */
+.project-card:hover { border-color: rgba(255,255,255,0.14) !important; }
+
+/* Contact form submit button */
+.submit-btn:hover:not(:disabled) { filter: brightness(1.12); }
+
+/* Contact form inputs: focus glow, matches the card spotlight technique */
+.form-input:focus { box-shadow: inset 0 0 24px rgba(255,255,255,0.03); }
+
+/* Home hero robot iframe: hidden below 880px, per source cutoff */
+@media (max-width: 879px) {
+  .robot-panel { display: none !important; }
+}
