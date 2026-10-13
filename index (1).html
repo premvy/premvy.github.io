@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prem Vyas — Mechatronics and Robotics Engineering Student</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #0A0A0A; }
+  html { scroll-behavior: smooth; }
+  #work, #experience, #contact { scroll-margin-top: 56px; }
+  body { -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #EDEDEF; text-decoration: none; }
+  a:hover { color: var(--accent, #FFB020); }
+  :focus-visible { outline: 2px solid var(--accent, #FFB020); outline-offset: 2px; }
+  input::placeholder, textarea::placeholder { color: #7A7A82; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @keyframes cuePulse { 0%, 100% { opacity: 0.9; } 50% { opacity: 0.25; } }
+  @keyframes dotPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</helmet>
+<div style="--accent: {{ accent }}; background: #0A0A0A; color: #EDEDEF; font-family: Inter, system-ui, sans-serif; min-height: 100vh; overflow-x: hidden">
+
+  <header style="position: fixed; top: 0; left: 0; right: 0; height: 56px; z-index: 40; background: rgba(10,10,10,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08)">
+    <nav style="height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+      <a href="#top" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #EDEDEF">Prem Vyas</a>
+      <div style="display: flex; align-items: center; gap: 28px; flex-wrap: wrap; justify-content: flex-end">
+        <a href="#work" style="font-size: 14px; color: #A0A0A8" style-hover="color: #EDEDEF">Work</a>
+        <a href="#experience" style="font-size: 14px; color: #A0A0A8" style-hover="color: #EDEDEF">Experience</a>
+        <a href="assets/Prem%20Vyas%20-%20Resume.pdf" download="Prem Vyas - Resume.pdf" style="font-size: 14px; color: #A0A0A8" style-hover="color: #EDEDEF">Resume</a>
+        <a href="#contact" style="font-size: 14px; color: #A0A0A8" style-hover="color: #EDEDEF">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top" style="max-width: 1280px; margin: 0 auto; padding: 0 32px">
+
+    <section style="position: relative; min-height: 88vh; padding-top: 96px; padding-bottom: 96px; display: flex; align-items: center; flex-wrap: wrap; gap: 48px">
+      <div style="flex: 1 1 420px; max-width: 560px; min-width: 0">
+        <h1 style="margin: 0; font-size: clamp(40px, 5.6vw, 72px); line-height: 1.0; letter-spacing: -0.035em; font-weight: 500; color: #EDEDEF">Prem Vyas</h1>
+        <p style="margin: 24px 0 0; font-size: clamp(16px, 1.4vw, 18px); line-height: 1.6; color: #A0A0A8; max-width: 480px; text-wrap: pretty">Mechatronics and Robotics engineering student at the University of Alberta, building hardware, custom PCBs and robotic mechanisms.</p>
+        <div style="margin-top: 32px; display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 8px 14px">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent, #FFB020); flex: none; animation: dotPulse 2.4s ease-in-out infinite"></span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #EDEDEF">Available — 4 or 8 month co-op, May 2027</span>
+        </div>
+      </div>
+
+      <sc-if value="{{ showRobot }}" hint-placeholder-val="{{ true }}">
+        <div style="flex: 1 1 520px; min-width: 0; position: relative; height: min(76vh, 720px)">
+          <div style="position: absolute; inset: -6%; background: radial-gradient(closest-side, rgba(255,255,255,0.03), transparent 100%); pointer-events: none"></div>
+          <canvas data-spline="" ref="{{ splineRef }}" aria-label="Interactive 3D robot character" style="position: relative; z-index: 1; display: block; width: 100%; height: 100%; background: #0A0A0A; opacity: 0; transition: opacity 400ms ease-out"></canvas>
+          <div data-spline-cover="" style="position: absolute; right: 0; bottom: 0; width: 180px; height: 56px; background: #0A0A0A; z-index: 3; pointer-events: auto"></div>
+          <div data-spline-loader="" style="position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; transition: opacity 400ms ease-out; pointer-events: none">
+            <div style="border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 14px 20px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82">Initialising</div>
+            <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--accent, #FFB020); animation: dotPulse 1.8s ease-in-out infinite"></span>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="position: absolute; left: 0; bottom: 40px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; animation: cuePulse 2s ease-in-out infinite">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82">Scroll</span>
+        <span style="display: block; width: 1px; height: 24px; background: rgba(255,255,255,0.14)"></span>
+      </div>
+    </section>
+
+    <section id="work" style="padding-bottom: clamp(64px, 9vw, 112px)">
+      <div data-reveal="" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82; padding-bottom: 16px">01 / Selected Work</div>
+      <div style="height: 1px; background: rgba(255,255,255,0.08)"></div>
+      <div style="height: 32px"></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px">
+
+        <a data-card="" data-reveal="" href="flight-controller.html" style="position: relative; display: block; overflow: hidden; background: #121214; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 28px; transition: border-color 160ms ease-out" style-hover="border-color: rgba(255,255,255,0.14)">
+          <div data-spot="" style="position: absolute; inset: 0; opacity: 0; transition: opacity 300ms ease-out; pointer-events: none"></div>
+          <div style="position: relative; display: flex; flex-direction: column; gap: 12px; height: 100%">
+            <h3 style="margin: 0; font-size: 18px; line-height: 1.4; font-weight: 500; color: #EDEDEF">Custom Drone Flight Controller</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #A0A0A8; text-wrap: pretty">A two layer STM32 board designed, routed and taken to fabricated hardware.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 3px 8px">KiCad</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 3px 8px">STM32</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 3px 8px">C</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 3px 8px">Python</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 20px">
+              <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--accent, #FFB020); flex: none"></span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: #A0A0A8">Rev 1 in hand, firmware in progress</span>
+            </div>
+          </div>
+        </a>
+
+        <a data-card="" data-reveal="" href="macropad.html" style="position: relative; display: block; overflow: hidden; background: #121214; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 28px; transition: border-color 160ms ease-out" style-hover="border-color: rgba(255,255,255,0.14)">
+          <div data-spot="" style="position: absolute; inset: 0; opacity: 0; transition: opacity 300ms ease-out; pointer-events: none"></div>
+          <div style="position: relative; display: flex; flex-direction: column; gap: 12px; height: 100%">
+            <h3 style="margin: 0; font-size: 18px; line-height: 1.4; font-weight: 500; color: #EDEDEF">12-Key Macropad</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #A0A0A8; text-wrap: pretty">A mechanical macropad built to drive the SolidWorks commands that have no keyboard shortcut.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 3px 8px">KiCad</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 3px 8px">SolidWorks</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 3px 8px">Python</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 20px">
+              <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--accent, #FFB020); flex: none"></span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: #A0A0A8">Complete, in daily use</span>
+            </div>
+          </div>
+        </a>
+
+        <a data-card="" data-reveal="" href="robotic-hand.html" style="position: relative; display: block; overflow: hidden; background: #121214; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 28px; transition: border-color 160ms ease-out" style-hover="border-color: rgba(255,255,255,0.14)">
+          <div data-spot="" style="position: absolute; inset: 0; opacity: 0; transition: opacity 300ms ease-out; pointer-events: none"></div>
+          <div style="position: relative; display: flex; flex-direction: column; gap: 12px; height: 100%">
+            <h3 style="margin: 0; font-size: 18px; line-height: 1.4; font-weight: 500; color: #EDEDEF">Tendon-Driven Robotic Hand</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #A0A0A8; text-wrap: pretty">A five-finger robotic hand built to play rock paper scissors against a person.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 3px 8px">SolidWorks</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 3px 8px">Arduino</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 3px 8px">C++</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #7A7A82; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 3px 8px">3D Printing</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 20px">
+              <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--accent, #FFB020); flex: none"></span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: #A0A0A8">Assembled, in bring-up</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <section id="experience" style="padding-bottom: clamp(64px, 9vw, 112px)">
+      <div data-reveal="" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82; padding-bottom: 16px">02 / Experience</div>
+      <div style="height: 1px; background: rgba(255,255,255,0.08)"></div>
+      <div style="height: 32px"></div>
+
+      <article data-reveal="" style="padding-bottom: 48px">
+        <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px">
+          <h3 style="margin: 0; font-size: 18px; line-height: 1.4; font-weight: 500; color: #EDEDEF">Mechatronics Engineer Intern</h3>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #7A7A82">Jul 2026 – Present</span>
+        </div>
+        <p style="margin: 6px 0 0; font-size: 16px; line-height: 1.5; color: #A0A0A8">Neuromuscular Control &amp; Biomechanics Laboratory</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 720px; margin-top: 24px">
+          <div style="display: flex; gap: 14px"><span style="flex: none; color: #7A7A82; line-height: 1.65">—</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">Developing a 7-DOF cable-driven hand exoskeleton for children with cerebral palsy, actuated from a backpack unit to keep hand-mounted mass under 200 g.</span></div>
+          <div style="display: flex; gap: 14px"><span style="flex: none; color: #7A7A82; line-height: 1.65">—</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">Combining thumb, finger and wrist actuation in one pediatric device, where existing pediatric exoskeletons support 2 movements or fewer.</span></div>
+          <div style="display: flex; gap: 14px"><span style="flex: none; color: #7A7A82; line-height: 1.65">—</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">Derived a method generating 25 CAD dimensions from a single hand-length measurement, validated at 6% mean absolute error, with 3 device sizes covering ages 6 to 18.</span></div>
+          <div style="display: flex; gap: 14px"><span style="flex: none; color: #7A7A82; line-height: 1.65">—</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">Implementing force-limited actuation with current-controlled servos, capping fingertip force at 3 to 5 N for safe assist on spastic hands.</span></div>
+        </div>
+      </article>
+      <div style="height: 1px; background: rgba(255,255,255,0.08)"></div>
+
+      <article data-reveal="" style="padding: 48px 0">
+        <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px">
+          <h3 style="margin: 0; font-size: 18px; line-height: 1.4; font-weight: 500; color: #EDEDEF">Mechanical Team Member</h3>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #7A7A82">May 2026 – Present</span>
+        </div>
+        <p style="margin: 6px 0 0; font-size: 16px; line-height: 1.5; color: #A0A0A8">University of Alberta Robotics and Aerial Drones (UA-RAD)</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 720px; margin-top: 24px">
+          <div style="display: flex; gap: 14px"><span style="flex: none; color: #7A7A82; line-height: 1.65">—</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">Building a payload-dropper mechanism for a hexacopter to hold and release a 10–12 kg payload, using a self-locking ratchet and pawl design.</span></div>
+          <div style="display: flex; gap: 14px"><span style="flex: none; color: #7A7A82; line-height: 1.65">—</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">Designing motor mounts sized to react up to 82 N of thrust, clamping onto a carbon-fiber arm without crushing the tube.</span></div>
+          <div style="display: flex; gap: 14px"><span style="flex: none; color: #7A7A82; line-height: 1.65">—</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">Ran physical load tests on carbon-fiber arms, sizing the test load from motor thrust data and a safety factor to verify the arms survive flight loads without failing.</span></div>
+        </div>
+      </article>
+      <div style="height: 1px; background: rgba(255,255,255,0.08)"></div>
+
+      <article data-reveal="" style="padding-top: 48px">
+        <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px">
+          <h3 style="margin: 0; font-size: 18px; line-height: 1.4; font-weight: 500; color: #EDEDEF">Aerodynamics Team Member</h3>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #7A7A82">Feb 2026 – Oct 2026</span>
+        </div>
+        <p style="margin: 6px 0 0; font-size: 16px; line-height: 1.5; color: #A0A0A8">University of Alberta Formula Racing</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 720px; margin-top: 24px">
+          <div style="display: flex; gap: 14px"><span style="flex: none; color: #7A7A82; line-height: 1.65">—</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">Designed a low-drag single-surface radiator cooling scoop that delivers airflow to the radiator face with near-zero pressure loss and near-uniform distribution at 15 m/s.</span></div>
+          <div style="display: flex; gap: 14px"><span style="flex: none; color: #7A7A82; line-height: 1.65">—</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">Ran coastdown simulations in RaceStudio 3 to evaluate aerodynamic drag data and improve the aerodynamic performance of the Formula Racing car.</span></div>
+          <div style="display: flex; gap: 14px"><span style="flex: none; color: #7A7A82; line-height: 1.65">—</span><span style="font-size: 16px; line-height: 1.65; color: #EDEDEF; text-wrap: pretty">Performed Computational Fluid Dynamics (CFD) simulations using Ansys to analyze airflow patterns, drag coefficients, and pressure distribution.</span></div>
+        </div>
+      </article>
+    </section>
+    <section id="education" style="padding-bottom: clamp(64px, 9vw, 112px)">
+      <div data-reveal="" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82; padding-bottom: 16px">03 / Education</div>
+      <div style="height: 1px; background: rgba(255,255,255,0.08)"></div>
+      <div style="height: 32px"></div>
+      <div data-reveal="" style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px">
+        <span style="font-size: 18px; font-weight: 500; color: #EDEDEF">University of Alberta</span>
+        <span style="font-size: 16px; color: #A0A0A8">BSc Mechatronics and Robotics Engineering Co-op</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #7A7A82">Sep 2025 – Apr 2030 · Edmonton, AB</span>
+      </div>
+      <div data-reveal="" style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; margin-top: 12px">
+        <span style="font-size: 16px; color: #A0A0A8">Academic Terms 3 of 8 | Co-op Work Terms 0 of 5</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #7A7A82">Available Spring 2027 (8 months)</span>
+      </div>
+    </section>
+
+    <section id="skills" style="padding-bottom: clamp(64px, 9vw, 112px)">
+      <div data-reveal="" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82; padding-bottom: 16px">04 / Skills</div>
+      <div style="height: 1px; background: rgba(255,255,255,0.08)"></div>
+      <div style="height: 32px"></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px 48px">
+        <div data-reveal="">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82">CAD &amp; Simulation</div>
+          <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.7; color: #A0A0A8">SolidWorks · Onshape · Ansys (CFD) · RaceStudio 3 · LoggerPro · Blender</p>
+        </div>
+        <div data-reveal="">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82">Robotics and Computer Vision</div>
+          <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.7; color: #A0A0A8">MediaPipe · OpenCV · ROS 2 · Isaac Sim</p>
+        </div>
+        <div data-reveal="">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82">Electrical &amp; Embedded</div>
+          <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.7; color: #A0A0A8">KiCad · ArduPilot · STM32 · Arduino · Power Electronics</p>
+        </div>
+        <div data-reveal="">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82">Programming</div>
+          <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.7; color: #A0A0A8">Python · Visual Basic · C/C++ · Linux/CLI · JavaScript · React · Node.js · Git</p>
+        </div>
+        <div data-reveal="">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82">Manufacturing</div>
+          <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.7; color: #A0A0A8">3D Printing (FDM) · CO₂ Laser Cutter · Fibre Cutter · Waterjet Cutting · Hand and Power Tools · PCB Soldering</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contact" style="border-top: 1px solid rgba(255,255,255,0.08)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 9vw, 112px) 32px">
+      <div data-reveal="" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82; padding-bottom: 16px">04 / Contact</div>
+      <div style="height: 1px; background: rgba(255,255,255,0.08)"></div>
+      <div style="height: 32px"></div>
+      <div data-reveal="" style="max-width: 720px">
+        <h2 style="margin: 0 0 8px; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #EDEDEF">Get in touch</h2>
+        <p style="margin: 0 0 32px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">Feel free to reach out&nbsp;</p>
+
+        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+          <form action="https://formspree.io/f/xnpaloql" method="POST" onSubmit="{{ onSubmit }}" style="opacity: {{ formOpacity }}; transition: opacity 300ms ease-out; display: flex; flex-direction: column; gap: 24px; max-width: 560px">
+            <input type="hidden" name="_subject" value="New message from portfolio site">
+
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <label for="cf-name" style="font-size: 14px; color: {{ nameLabel }}; transition: color 160ms ease-out">Name</label>
+              <input id="cf-name" name="name" type="text" required="" value="{{ nameValue }}" onChange="{{ onName }}" onFocus="{{ onNameFocus }}" onBlur="{{ onNameBlur }}" placeholder="Your name" style="width: 100%; padding: 12px 16px; background: #121214; border: 1px solid {{ nameBorder }}; border-radius: 4px; color: #EDEDEF; font-family: inherit; font-size: 14px; outline: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,0); transition: border-color 160ms ease-out, box-shadow 160ms ease-out" style-focus="box-shadow: inset 0 0 24px rgba(255,255,255,0.03)">
+              <sc-if value="{{ nameError }}" hint-placeholder-val="{{ false }}">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #E8694F">{{ nameError }}</div>
+              </sc-if>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <label for="cf-email" style="font-size: 14px; color: {{ emailLabel2 }}; transition: color 160ms ease-out">Email</label>
+              <input id="cf-email" name="email" type="email" required="" value="{{ emailValue }}" onChange="{{ onEmail }}" onFocus="{{ onEmailFocus }}" onBlur="{{ onEmailBlur }}" placeholder="you@example.com" style="width: 100%; padding: 12px 16px; background: #121214; border: 1px solid {{ emailBorder }}; border-radius: 4px; color: #EDEDEF; font-family: inherit; font-size: 14px; outline: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,0); transition: border-color 160ms ease-out, box-shadow 160ms ease-out" style-focus="box-shadow: inset 0 0 24px rgba(255,255,255,0.03)">
+              <sc-if value="{{ emailError }}" hint-placeholder-val="{{ false }}">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #E8694F">{{ emailError }}</div>
+              </sc-if>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <label for="cf-message" style="font-size: 14px; color: {{ messageLabel }}; transition: color 160ms ease-out">Message</label>
+              <div style="position: relative">
+                <textarea id="cf-message" name="message" required="" rows="6" value="{{ messageValue }}" onChange="{{ onMessage }}" onFocus="{{ onMessageFocus }}" onBlur="{{ onMessageBlur }}" placeholder="What's on your mind?" style="width: 100%; padding: 12px 16px 32px; background: #121214; border: 1px solid {{ messageBorder }}; border-radius: 4px; color: #EDEDEF; font-family: inherit; font-size: 14px; line-height: 1.65; resize: vertical; outline: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,0); transition: border-color 160ms ease-out, box-shadow 160ms ease-out" style-focus="box-shadow: inset 0 0 24px rgba(255,255,255,0.03)"></textarea>
+                <span style="position: absolute; right: 16px; bottom: 16px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #7A7A82; pointer-events: none">{{ charCount }}</span>
+              </div>
+              <sc-if value="{{ messageError }}" hint-placeholder-val="{{ false }}">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #E8694F">{{ messageError }}</div>
+              </sc-if>
+            </div>
+
+            <sc-if value="{{ sendError }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size: 14px; line-height: 1.65; color: #E8694F">{{ sendError }}</div>
+            </sc-if>
+
+            <div>
+              <button type="submit" disabled="{{ submitDisabled }}" style="display: inline-flex; align-items: center; padding: 14px 24px; border: none; border-radius: 4px; background: var(--accent, #FFB020); color: #0A0A0A; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; opacity: {{ submitOpacity }}; filter: brightness(1); transition: filter 160ms ease-out, opacity 160ms ease-out" style-hover="filter: brightness(1.12)">{{ submitLabel }}</button>
+            </div>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ showSent }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 560px; animation: fadeUp 300ms ease-out both">
+            <div style="display: flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A82">
+              <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent, #FFB020)"></span>Message sent
+            </div>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #EDEDEF">Thanks, I'll get back to you soon.</p>
+          </div>
+        </sc-if>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 16px 32px; margin-top: 48px">
+          <a href="https://github.com/premvy" target="_blank" rel="noopener noreferrer" style="font-size: 14px; color: #A0A0A8" style-hover="color: var(--accent, #FFB020)">github.com/premvy</a>
+          <a href="https://www.linkedin.com/in/premvyas" target="_blank" rel="noopener noreferrer" style="font-size: 14px; color: #A0A0A8" style-hover="color: var(--accent, #FFB020)">linkedin.com/in/premvyas</a>
+          <a href="assets/Prem%20Vyas%20-%20Resume.pdf" download="Prem Vyas - Resume.pdf" style="font-size: 14px; color: #A0A0A8" style-hover="color: var(--accent, #FFB020)">Resume (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FFB020&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#FFB020&quot;,&quot;#E5E5E7&quot;,&quot;#4DA3FF&quot;,&quot;#FF6B4A&quot;]},&quot;showRobot&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { wide: true, splineFailed: false, copied: false, focused: null, status: 'idle', sendError: '' };
+
+  copyEmail = (e) => {
+    e.preventDefault();
+    const addr = 'pnv@ualberta.ca';
+    const done = () => {
+      this.setState({ copied: true });
+      clearTimeout(this.copyTimer);
+      this.copyTimer = setTimeout(() => this.setState({ copied: false }), 1800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(addr).then(done, () => this.fallbackCopy(addr, done));
+    } else {
+      this.fallbackCopy(addr, done);
+    }
+  };
+
+  fallbackCopy(text, done) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (err) {}
+    document.body.removeChild(ta);
+  }
+
+  form = { name: '', email: '', message: '' };
+  touched = {};
+
+  fieldError(k) {
+    const v = (this.form[k] || '').trim();
+    if (!this.touched[k]) return '';
+    if (!v) return 'Required';
+    if (k === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'Invalid email';
+    return '';
+  }
+
+  onField = (k) => (e) => {
+    this.form[k] = e.target.value;
+    this.forceUpdate();
+  };
+
+  onFieldBlur = (k) => () => {
+    this.touched[k] = true;
+    this.setState({ focused: null });
+  };
+
+  onFieldFocus = (k) => () => this.setState({ focused: k });
+
+  border(k) {
+    if (this.fieldError(k)) return '#E8694F';
+    if (this.state.focused === k) return this.props.accent ?? '#FFB020';
+    return 'rgba(255,255,255,0.08)';
+  }
+
+  labelColor(k) {
+    return (this.state.focused === k || (this.form[k] || '').length) ? '#EDEDEF' : '#A0A0A8';
+  }
+
+  submitForm = (e) => {
+    e.preventDefault();
+    ['name', 'email', 'message'].forEach(k => { this.touched[k] = true; });
+    this.forceUpdate();
+    if (['name', 'email', 'message'].some(k => this.fieldError(k) || !(this.form[k] || '').trim())) return;
+
+    this.setState({ status: 'sending', sendError: '' });
+    const body = new FormData();
+    body.append('name', this.form.name);
+    body.append('email', this.form.email);
+    body.append('message', this.form.message);
+    body.append('_subject', 'New message from portfolio site');
+
+    fetch('https://formspree.io/f/xnpaloql', { method: 'POST', body, headers: { Accept: 'application/json' } })
+      .then(r => {
+        if (!r.ok) throw new Error('bad status');
+        this.setState({ status: 'fading' });
+        setTimeout(() => this.setState({ status: 'sent' }), 300);
+      })
+      .catch(() => this.setState({ status: 'error', sendError: 'Something went wrong. Email me directly at pnv@ualberta.ca.' }));
+  };
+
+  renderVals() {
+    const sending = this.state.status === 'sending';
+    return {
+      copyEmail: this.copyEmail,
+      nameValue: this.form.name,
+      emailValue: this.form.email,
+      messageValue: this.form.message,
+      onName: this.onField('name'),
+      onEmail: this.onField('email'),
+      onMessage: this.onField('message'),
+      onNameFocus: this.onFieldFocus('name'),
+      onEmailFocus: this.onFieldFocus('email'),
+      onMessageFocus: this.onFieldFocus('message'),
+      onNameBlur: this.onFieldBlur('name'),
+      onEmailBlur: this.onFieldBlur('email'),
+      onMessageBlur: this.onFieldBlur('message'),
+      nameError: this.fieldError('name'),
+      emailError: this.fieldError('email'),
+      messageError: this.fieldError('message'),
+      nameBorder: this.border('name'),
+      emailBorder: this.border('email'),
+      messageBorder: this.border('message'),
+      nameLabel: this.labelColor('name'),
+      emailLabel2: this.labelColor('email'),
+      messageLabel: this.labelColor('message'),
+      charCount: String(this.form.message.length),
+      onSubmit: this.submitForm,
+      submitLabel: sending ? 'Sending...' : 'Send message',
+      submitDisabled: sending,
+      submitOpacity: sending ? 0.6 : 1,
+      sendError: this.state.sendError || '',
+      showForm: this.state.status !== 'sent',
+      showSent: this.state.status === 'sent',
+      formOpacity: this.state.status === 'fading' ? 0 : 1,
+      emailLabel: this.state.copied ? 'Copied to clipboard' : 'pnv@ualberta.ca',
+      accent: this.props.accent ?? '#FFB020',
+      showRobot: this.state.wide && !this.state.splineFailed && (this.props.showRobot ?? true),
+      splineRef: this.splineRef
+    };
+  }
+
+  splineRef = (el) => {
+    if (!el || el === this.splineCanvas) return;
+    this.splineCanvas = el;
+    if (this.splineApp) { try { this.splineApp.dispose(); } catch (e) {} this.splineApp = null; }
+    const fallback = () => {
+      if (this.splineCanvas !== el || this.splineFellBack) return;
+      this.splineFellBack = true;
+      const f = document.createElement('iframe');
+      f.src = 'https://my.spline.design/nexbotrobotcharacterconcept-T9N2E9ufw1hmdG36iVeZaHCI/';
+      f.title = 'Interactive 3D robot character';
+      f.setAttribute('data-spline', '');
+      f.style.cssText = 'position: relative; z-index: 1; display: block; width: 100%; height: 100%; border: 0; background: #0A0A0A; opacity: 0; transition: opacity 400ms ease-out';
+      f.onload = () => this.revealSpline();
+      el.replaceWith(f);
+    };
+    const timer = setTimeout(fallback, 12000);
+    import('https://cdn.jsdelivr.net/npm/@splinetool/runtime@1.12.98/build/runtime.js')
+      .then(({ Application }) => {
+        if (this.splineCanvas !== el) return;
+        const app = new Application(el);
+        this.splineApp = app;
+        return app.load(new URL('assets/robot.splinecode', document.baseURI).href).then(() => {
+          clearTimeout(timer);
+          try { app.setBackgroundColor('#0A0A0A'); } catch (e) {}
+          this.revealSpline();
+        });
+      })
+      .catch(() => { clearTimeout(timer); fallback(); });
+  };
+
+  revealSpline() {
+    this.loaded = true;
+    const f = document.querySelector('[data-spline]');
+    const l = document.querySelector('[data-spline-loader]');
+    if (f) f.style.opacity = '1';
+    if (l) { l.style.opacity = '0'; setTimeout(() => { l.style.display = 'none'; }, 450); }
+  }
+
+  componentDidMount() {
+    this.mq = window.matchMedia('(min-width: 880px)');
+    this.onMq = () => this.setState({ wide: this.mq.matches });
+    this.mq.addEventListener('change', this.onMq);
+    if (!this.mq.matches) this.setState({ wide: false });
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.props.reveal !== false && !reduce) this.setupReveal();
+    this.setupSpotlight();
+  }
+
+  componentWillUnmount() {
+    if (this.mq && this.onMq) this.mq.removeEventListener('change', this.onMq);
+    if (this.io) this.io.disconnect();
+    if (this.moveOff) this.moveOff();
+    if (this.splineApp) { try { this.splineApp.dispose(); } catch (e) {} }
+  }
+
+  setupReveal() {
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    els.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(12px)';
+      el.style.transition = 'opacity 500ms ease-out, transform 500ms ease-out';
+    });
+    const show = el => {
+      const sibs = Array.from(el.parentElement ? el.parentElement.children : []).filter(n => n.hasAttribute && n.hasAttribute('data-reveal'));
+      const i = Math.max(0, sibs.indexOf(el));
+      setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, i * 60);
+    };
+    this.io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { show(e.target); this.io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    els.forEach(el => this.io.observe(el));
+    setTimeout(() => els.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; }), 2500);
+  }
+
+  setupSpotlight() {
+    let pending = null, raf = 0, active = null;
+    const flush = () => {
+      raf = 0;
+      const e = pending;
+      if (!e) return;
+      const card = e.target && e.target.closest ? e.target.closest('[data-card]') : null;
+      if (active && active !== card) {
+        const s = active.querySelector('[data-spot]');
+        if (s) { s.style.transition = 'opacity 300ms ease-out'; s.style.opacity = '0'; }
+        active = null;
+      }
+      if (!card) return;
+      const spot = card.querySelector('[data-spot]');
+      if (!spot) return;
+      const r = card.getBoundingClientRect();
+      spot.style.background = 'radial-gradient(400px circle at ' + (e.clientX - r.left) + 'px ' + (e.clientY - r.top) + 'px, rgba(255,255,255,0.045), transparent 60%)';
+      if (active !== card) { spot.style.transition = 'opacity 200ms ease-out'; spot.style.opacity = '1'; active = card; }
+    };
+    const onMove = e => { pending = e; if (!raf) raf = requestAnimationFrame(flush); };
+    window.addEventListener('mousemove', onMove, { passive: true });
+    this.moveOff = () => { window.removeEventListener('mousemove', onMove); if (raf) cancelAnimationFrame(raf); };
+  }
+}
+</script>
+</body>
+</html>
