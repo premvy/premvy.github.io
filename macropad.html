@@ -1,21 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>12-Key Macropad · Prem Vyas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #0A0A0A; }
+  body { -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #EDEDEF; text-decoration: none; }
+  a:hover { color: #FFB020; }
+  :focus-visible { outline: 2px solid #FFB020; outline-offset: 2px; }
+</style>
+</helmet>
 <div style="background: #0A0A0A; color: #EDEDEF; font-family: Inter, system-ui, sans-serif; min-height: 100vh; overflow-x: hidden">
 
   <header style="position: fixed; top: 0; left: 0; right: 0; height: 56px; z-index: 40; background: rgba(10,10,10,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08)">
     <nav style="height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
       <a href="index.html" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #EDEDEF">Prem Vyas</a>
-      <a href="index.html#work" class="link-hover-fg" style="font-size: 14px; color: #A0A0A8">← Back to home</a>
+      <a href="index.html#work" style="font-size: 14px; color: #A0A0A8" style-hover="color: #EDEDEF">← Back to home</a>
     </nav>
   </header>
 
@@ -54,6 +66,7 @@
         <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">I spend most of my time in SolidWorks, and the commands I reach for constantly are the ones with no keyboard shortcut at all. Measure, Section View, Mirror, Linear Pattern, Hole Wizard, Convert Entities, Interference Detection, and the toggles for origins, planes and sketch relations are all buried in a menu or a toolbar hunt. Each one costs a couple of seconds and a break in concentration, and I hit them hundreds of times a day.</p>
         <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">A macropad only fixes that if its keys can reach commands the software has no binding for. The way in is F13 through F24. Those keycodes exist in the USB HID spec, but no physical keyboard has shipped them in decades, so nothing in the OS or in SolidWorks claims them. I bind each one inside SolidWorks under Tools, Customize, Keyboard, and the pad sends them.</p>
         <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #A0A0A8; text-wrap: pretty">The rest of the keys go to shortcuts that already exist and are worth having under a thumb anyway: Ctrl+8 for normal to, Ctrl+B for rebuild, Ctrl+Q for force rebuild.</p>
+        
       </section>
 
       <section style="max-width: 720px; margin-top: 96px">
@@ -110,10 +123,76 @@
 
   <footer style="border-top: 1px solid rgba(255,255,255,0.08)">
     <div style="max-width: 1280px; margin: 0 auto; padding: 48px 32px">
-      <a href="index.html#work" class="link-hover-accent" style="font-size: 14px; color: #A0A0A8">← Back to home</a>
+      <a href="index.html#work" style="font-size: 14px; color: #A0A0A8" style-hover="color: #FFB020">← Back to home</a>
     </div>
   </footer>
 </div>
-<script src="js/site.js"></script>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    this.setupLightbox();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    els.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(12px)';
+      el.style.transition = 'opacity 500ms ease-out, transform 500ms ease-out';
+    });
+    this.io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          this.io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(el => this.io.observe(el));
+    setTimeout(() => els.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; }), 2500);
+  }
+  componentWillUnmount() {
+    if (this.io) this.io.disconnect();
+    document.removeEventListener('click', this.onClick);
+    document.removeEventListener('keydown', this.onKey);
+  }
+
+  openLightbox(img) {
+    const box = document.querySelector('[data-lightbox]');
+    const target = document.querySelector('[data-lightbox-img]');
+    const cap = document.querySelector('[data-lightbox-cap]');
+    if (!box || !target) return;
+    target.src = img.currentSrc || img.src;
+    target.alt = img.alt || '';
+    const fig = img.closest('figure');
+    const figcap = fig && fig.querySelector('figcaption');
+    if (cap) cap.textContent = figcap ? figcap.textContent : '';
+    box.style.opacity = '1';
+    box.style.pointerEvents = 'auto';
+    const close = box.querySelector('[data-lightbox-close]');
+    if (close) close.focus();
+  }
+
+  closeLightbox() {
+    const box = document.querySelector('[data-lightbox]');
+    if (!box) return;
+    const target = box.querySelector('[data-lightbox-img]');
+    if (target) target.removeAttribute('src');
+    box.style.opacity = '0';
+    box.style.pointerEvents = 'none';
+  }
+
+  setupLightbox() {
+    this.onClick = e => {
+      const img = e.target.closest && e.target.closest('[data-zoom]');
+      if (img) { this.openLightbox(img); return; }
+      if (e.target.closest && e.target.closest('[data-lightbox]')) this.closeLightbox();
+    };
+    this.onKey = e => { if (e.key === 'Escape') this.closeLightbox(); };
+    document.addEventListener('click', this.onClick);
+    document.addEventListener('keydown', this.onKey);
+  }
+}
+</script>
 </body>
 </html>
