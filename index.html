@@ -429,17 +429,30 @@ class Component extends DCLogic {
     if (!el || el === this.splineCanvas) return;
     this.splineCanvas = el;
     if (this.splineApp) { try { this.splineApp.dispose(); } catch (e) {} this.splineApp = null; }
-    import('https://cdn.jsdelivr.net/npm/@splinetool/runtime@1.9.98/build/runtime.js')
+    const fallback = () => {
+      if (this.splineCanvas !== el || this.splineFellBack) return;
+      this.splineFellBack = true;
+      const f = document.createElement('iframe');
+      f.src = 'https://my.spline.design/nexbotrobotcharacterconcept-T9N2E9ufw1hmdG36iVeZaHCI/';
+      f.title = 'Interactive 3D robot character';
+      f.setAttribute('data-spline', '');
+      f.style.cssText = 'position: relative; z-index: 1; display: block; width: 100%; height: 100%; border: 0; background: #0A0A0A; opacity: 0; transition: opacity 400ms ease-out';
+      f.onload = () => this.revealSpline();
+      el.replaceWith(f);
+    };
+    const timer = setTimeout(fallback, 12000);
+    import('https://cdn.jsdelivr.net/npm/@splinetool/runtime@1.12.98/build/runtime.js')
       .then(({ Application }) => {
         if (this.splineCanvas !== el) return;
         const app = new Application(el);
         this.splineApp = app;
-        return app.load('assets/robot.splinecode').then(() => {
-          app.setBackgroundColor('#0A0A0A');
+        return app.load(new URL('assets/robot.splinecode', document.baseURI).href).then(() => {
+          clearTimeout(timer);
+          try { app.setBackgroundColor('#0A0A0A'); } catch (e) {}
           this.revealSpline();
         });
       })
-      .catch(() => this.setState({ splineFailed: true }));
+      .catch(() => { clearTimeout(timer); fallback(); });
   };
 
   revealSpline() {
